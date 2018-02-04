@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/FabienLebas/BikeOrCarServer/issues"
   },
-  "homepage": "https://github.com/FabienLebas/BikeOrCarServer#readme"
+  "homepage": "https://github.com/FabienLebas/BikeOrCarServer#readme",
+  "dependencies": {
+    "express": "^4.16.2"
+  }
 }
