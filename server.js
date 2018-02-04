@@ -8,5 +8,5 @@ app.listen(port, function () {
 });
 
 app.get("/", function (request, result) {
-  esult.send("Welcome to BikeOrCar API server");
+  result.send("Welcome to BikeOrCar API server");
 });
