@@ -18,5 +18,6 @@
   "homepage": "https://github.com/FabienLebas/BikeOrCarServer#readme",
   "dependencies": {
     "express": "^4.16.2"
-  }
+  },
+  "start": "node server.js"
 }
