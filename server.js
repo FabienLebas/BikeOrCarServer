@@ -22,6 +22,8 @@ const corsOptions = {
   }
 }:
 
+app.options('*', cors()) // include before other routes
+
 app.use(function(request, result, next) {
   result.header("Access-Control-Allow-Origin", whitelist); // Put an origin here, * means everything which is bad.
   result.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept"); // Needed by ExpressJS
