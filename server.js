@@ -9,6 +9,14 @@ const port = process.env.PORT || 4000;
 app.use(require("body-parser").json());
 app.use(require("body-parser").urlencoded({ extended: false }));
 
+const whitelist = ['http://localhost:3000', "https://bikeorcar-develop.herokuapp.com/", "https://bikeorcar.herokuapp.com/"];
+
+app.use(function(request, result, next) {
+  result.header("Access-Control-Allow-Origin", whitelist); // Put an origin here, * means everything which is bad.
+  result.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept"); // Needed by ExpressJS
+  next();
+});
+
 app.listen(port, function () {
   console.log("Server listening on port:" + port);
 });
