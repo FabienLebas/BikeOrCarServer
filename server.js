@@ -9,7 +9,7 @@ const port = process.env.PORT || 4000;
 app.use(require("body-parser").json());
 app.use(require("body-parser").urlencoded({ extended: false }));
 
-const whitelist = ["https://localhost:3000", "http://localhost:3000", "https://bikeorcar-develop.herokuapp.com/", "http://bikeorcar-develop.herokuapp.com/", "https://bikeorcar.herokuapp.com/", "http://bikeorcar.herokuapp.com/"];
+const whitelist = ["https://localhost:3000/", "http://localhost:3000/", "https://bikeorcar-develop.herokuapp.com/", "http://bikeorcar-develop.herokuapp.com/", "https://bikeorcar.herokuapp.com/", "http://bikeorcar.herokuapp.com/"];
 const corsOptions = {
   origin: function (origin, callback) {
     if (whitelist.indexOf(origin) !== -1) {
