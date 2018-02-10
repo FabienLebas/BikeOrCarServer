@@ -1,5 +1,7 @@
 const express = require("express");
 const app = express();
+var cors = require('cors')
+
 const getCityName = require("./queries/google");
 const getCurrentWeatherFromCoordinates = require("./queries/current");
 const getWeatherForecastFromCoordinates = require("./queries/forecast");
