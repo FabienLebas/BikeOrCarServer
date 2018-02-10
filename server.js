@@ -9,7 +9,7 @@ const port = process.env.PORT || 4000;
 app.use(require("body-parser").json());
 app.use(require("body-parser").urlencoded({ extended: false }));
 
-const whitelist = ['http://localhost:3000', "https://bikeorcar-develop.herokuapp.com/", "https://bikeorcar.herokuapp.com/"];
+const whitelist = ["https://localhost:3000", "http://localhost:3000", "https://bikeorcar-develop.herokuapp.com/", "http://bikeorcar-develop.herokuapp.com/", "https://bikeorcar.herokuapp.com/", "http://bikeorcar.herokuapp.com/"];
 
 app.use(function(request, result, next) {
   result.header("Access-Control-Allow-Origin", whitelist); // Put an origin here, * means everything which is bad.
