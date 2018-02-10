@@ -14,15 +14,15 @@ app.use(require("body-parser").json());
 app.use(require("body-parser").urlencoded({ extended: false }));
 
 const whitelist = ["https://localhost:3000/", "http://localhost:3000/", "https://bikeorcar-develop.herokuapp.com/", "http://bikeorcar-develop.herokuapp.com/", "https://bikeorcar.herokuapp.com/", "http://bikeorcar.herokuapp.com/"];
-const corsOptions = {
-  origin: function (origin, callback) {
-    if (whitelist.indexOf(origin) !== -1) {
-      callback(null, true)
-    } else {
-      callback(new Error('Not allowed by CORS'))
-    }
+const corsOptionsDelegate = function (req, callback) {
+  var corsOptions;
+  if (whitelist.indexOf(req.header('Origin')) !== -1) {
+    corsOptions = { origin: true } // reflect (enable) the requested origin in the CORS response
+  }else{
+    corsOptions = { origin: false } // disable CORS for this request
   }
-}:
+  callback(null, corsOptions) // callback expects two parameters: error and options
+};
 
 app.use(function(request, result, next) {
   result.header("Access-Control-Allow-Origin", whitelist); // Put an origin here, * means everything which is bad.
@@ -34,21 +34,21 @@ app.listen(port, function () {
   console.log("Server listening on port:" + port);
 });
 
-app.post("/getCityName", cors(corsOptions), function (request, result) {
+app.post("/getCityName", cors(corsOptionsDelegate), function (request, result) {
   getCityName(request.body.latitude, request.body.longitude)
     .then(object => {
       result.json(JSON.stringify(object));
     })
 });
 
-app.post("/getCurrentWeatherFromCoordinates", cors(corsOptions), function (request, result){
+app.post("/getCurrentWeatherFromCoordinates", cors(corsOptionsDelegate), function (request, result){
   getCurrentWeatherFromCoordinates(request.body.latitude, request.body.longitude)
     .then(object => {
       result.json(JSON.stringify(object));
     })
 });
 
-app.post("/getWeatherForecastFromCoordinates", cors(corsOptions), function (request, result){
+app.post("/getWeatherForecastFromCoordinates", cors(corsOptionsDelegate), function (request, result){
   getWeatherForecastFromCoordinates(request.body.latitude, request.body.longitude)
     .then(object => {
       result.json(JSON.stringify(object));
