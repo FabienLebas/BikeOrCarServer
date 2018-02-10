@@ -1,8 +1,8 @@
 const fetch = require("node-fetch");
-const REACT_APP_googleAPIKey = process.env.googleAPIKey;
+const googleAPIKey = process.env.googleAPIKey;
 
 function getCityName(latitude, longitude){
-  return fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${REACT_APP_googleAPIKey}`)
+  return fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${googleAPIKey}`)
     .then(result => result.json())
     .then(returnedData => {
       const today = new Date();

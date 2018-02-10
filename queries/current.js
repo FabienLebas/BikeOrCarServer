@@ -1,4 +1,5 @@
-const wundergroundId = process.env.REACT_APP_wundergroundId;
+const wundergroundId = process.env.wundergroundId;
+const fetch = require("node-fetch");
 
 function getCurrentWeatherFromCoordinates(latitude, longitude){
   return fetch(`https://api.wunderground.com/api/${wundergroundId}/conditions/lang:FR/q/${latitude},${longitude}.json`)
@@ -9,4 +10,4 @@ function getCurrentWeatherFromCoordinates(latitude, longitude){
   });
 }
 
-export default getCurrentWeatherFromCoordinates;
+module.exports = getCurrentWeatherFromCoordinates;

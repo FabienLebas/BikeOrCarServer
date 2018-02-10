@@ -1,6 +1,7 @@
-const wundergroundId = process.env.REACT_APP_wundergroundId;
+const wundergroundId = process.env.wundergroundId;
+const fetch = require("node-fetch");
 
-function getWeatherForecastFromCoordinates(latitude, longitude, morning, afternoon){
+function getWeatherForecastFromCoordinates(latitude, longitude){
   return fetch(`https://api.wunderground.com/api/${wundergroundId}/hourly10day/lang:FR/q/${latitude},${longitude}.json`)
   .then(response => response.json())
   .then(returnedData => returnedData.hourly_forecast)
@@ -9,4 +10,4 @@ function getWeatherForecastFromCoordinates(latitude, longitude, morning, afterno
   });
 }
 
-export default getWeatherForecastFromCoordinates;
+ module.exports = getWeatherForecastFromCoordinates;
