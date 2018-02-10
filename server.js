@@ -8,6 +8,8 @@ const getWeatherForecastFromCoordinates = require("./queries/forecast");
 
 const port = process.env.PORT || 4000;
 
+app.options('*', cors()) // include before other routes
+
 app.use(require("body-parser").json());
 app.use(require("body-parser").urlencoded({ extended: false }));
 
@@ -21,8 +23,6 @@ const corsOptions = {
     }
   }
 }:
-
-app.options('*', cors()) // include before other routes
 
 app.use(function(request, result, next) {
   result.header("Access-Control-Allow-Origin", whitelist); // Put an origin here, * means everything which is bad.
